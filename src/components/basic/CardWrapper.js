@@ -11,11 +11,15 @@ class CardWrapper extends Component {
     render() {
         return (
             <div className={style.cardwrapper}>
-                <Rate />
-                <CardHeader />
-                <Timer />
-                <CancelButton />
-                <DoneButton />
+                <div className={style.upper}>
+                    <Rate />
+                    <CardHeader />
+                    <Timer />
+                </div>
+                <div className={style.bottom}>
+                    <CancelButton />
+                    <DoneButton />
+                </div>
             </div>
         );
     }

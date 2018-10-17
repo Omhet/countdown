@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import {Header} from "semantic-ui-react";
 
 class Timer extends Component {
     render() {
         return (
             <div>
-                Timer
+                <Header size='small'>30</Header>
             </div>
         );
     }

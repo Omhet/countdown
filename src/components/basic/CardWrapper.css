@@ -4,4 +4,22 @@
     border: 1px solid lightslategrey;
     background-color: #ececec;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*align-items: flex-start;*/
+}
+
+.cardwrapper > * {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.upper {
+
+}
+
+.bottom {
+
 }
