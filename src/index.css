@@ -11,7 +11,3 @@ body > * {
     max-height: 100vh;
     height: 100vh;
 }
-
-button {
-    margin: 0 !important;
-}

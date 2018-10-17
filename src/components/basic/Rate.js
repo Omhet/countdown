@@ -5,7 +5,7 @@ class Rate extends Component {
     render() {
         return (
             <div>
-                <Header size='small'>22</Header>
+                <Header size='medium'>22</Header>
             </div>
         );
     }
