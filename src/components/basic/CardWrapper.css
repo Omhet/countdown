@@ -1,13 +1,12 @@
 .cardwrapper {
     width: 70%;
-    height: 45%;
+    height: 65%;
     border: 1px solid lightslategrey;
     background-color: #ececec;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*align-items: flex-start;*/
 }
 
 .cardwrapper > * {
