@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import style from  './App.css';
 
 // My Components
 import CardWrapper from './components/basic/CardWrapper';
@@ -7,7 +7,7 @@ import CardWrapper from './components/basic/CardWrapper';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className={style.App}>
           <CardWrapper />
       </div>
     );

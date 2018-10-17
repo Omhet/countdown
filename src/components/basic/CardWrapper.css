@@ -1,6 +1,7 @@
 .cardwrapper {
-    width: 200px;
-    height: 200px;
-    border: 1px solid aqua;
-    background-color: lightblue;
+    width: 70%;
+    height: 45%;
+    border: 1px solid lightslategrey;
+    background-color: #ececec;
+    border-radius: 5px;
 }
