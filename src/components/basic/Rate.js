@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import {Header} from "semantic-ui-react";
+import { Header, Icon } from "semantic-ui-react";
+import BaseStyle from "./Base.css";
 
 class Rate extends Component {
     render() {
         return (
-            <div>
-                <Header size='medium'>22</Header>
+            <div className={BaseStyle.flex}>
+                <Header className={BaseStyle.nomargin} size='medium'>22</Header>
+                <Icon name='paw'/>
             </div>
         );
     }
