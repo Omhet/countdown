@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
 
 const cardNameToComponentsMap = {
     WordCard: <WordCard/>,
-    NumberCard: <NumberCard/>,
+    NumberCard: <NumberCard/>
 };
 
 class CardWrapper extends Component {
@@ -45,9 +45,7 @@ class CardWrapper extends Component {
                     <Timer/>
                 </div>
 
-                <div>
-                    {currentCard}
-                </div>
+                {currentCard}
 
                 <div className={style.bottom}>
                     <CancelButton/>
