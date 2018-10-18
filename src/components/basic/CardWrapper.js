@@ -7,17 +7,30 @@ import CancelButton from './CancelButton';
 import DoneButton from './DoneButton';
 import { connect } from "react-redux";
 import WordCard from "../cards/WordCard";
+import NumberCard from "../cards/NumberCard";
+import { setCardName } from "../../actions/actionCreators";
+import { NUMBER_CARD, WORD_CARD } from "../../constants/cardNames";
 
 const mapStateToProps = state => {
     return { level: state.level };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        setCardName: name => dispatch(setCardName(name))
+    }
+};
+
+const cardNameToComponentsMap = {
+    WordCard: <WordCard/>,
+    NumberCard: <NumberCard/>,
+};
 
 class CardWrapper extends Component {
     resolveCard = () => {
-        if (this.props.level % 2 === 0) {
-            return <WordCard/>;
-        }
+        const currentCardName = (this.props.level % 2 === 0) ? WORD_CARD : NUMBER_CARD;
+        this.props.setCardName(currentCardName);
+        return cardNameToComponentsMap[currentCardName];
     };
 
 
@@ -27,9 +40,9 @@ class CardWrapper extends Component {
         return (
             <div className={style.cardwrapper}>
                 <div className={style.upper}>
-                    <Rate />
-                    <CardHeader />
-                    <Timer />
+                    <Rate/>
+                    <CardHeader/>
+                    <Timer/>
                 </div>
 
                 <div>
@@ -37,12 +50,12 @@ class CardWrapper extends Component {
                 </div>
 
                 <div className={style.bottom}>
-                    <CancelButton />
-                    <DoneButton />
+                    <CancelButton/>
+                    <DoneButton/>
                 </div>
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps, null)(CardWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(CardWrapper);

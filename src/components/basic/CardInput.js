@@ -2,20 +2,20 @@ import React, {Component} from 'react';
 import { connect } from "react-redux";
 import {Input} from "semantic-ui-react";
 
-import { changeValue } from '../../actions/actionCreators';
+import { setCardValue } from '../../actions/actionCreators';
 
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeValue: value => dispatch(changeValue(value))
+      setCardValue: value => dispatch(setCardValue(value))
   };
 };
 
 
 class CardInput extends Component {
     handleChange = (e) => {
-        this.props.changeValue(e.target.value);
+        this.props.setCardValue(e.target.value);
     };
 
     render() {

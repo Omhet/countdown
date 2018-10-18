@@ -19,12 +19,12 @@ const mapDispatchToProps = dispatch => {
 class DoneButton extends Component {
     doneButtonClick = () => {
         console.log('click')
-    };
+    }
 
     render() {
         return (
             <div>
-                <Button onClick={this.doneButtonClick} className={BaseStyle.nomargin}
+                <Button onClick={this.props.levelUp} className={BaseStyle.nomargin}
                         animated
                         color='green'
                         size='massive'>
