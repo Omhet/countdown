@@ -1,12 +1,30 @@
 import React, {Component} from 'react';
+import { connect } from "react-redux";
+
 import {Button, Icon} from "semantic-ui-react";
 import BaseStyle from "./Base.css";
 
+import { levelUp } from '../../actions/actionCreators';
+
+const mapStateToProps = state => {
+  return { currentCard: state.currentCard };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    levelUp: () => dispatch(levelUp())
+  };
+};
+
 class DoneButton extends Component {
+    doneButtonClick = () => {
+        console.log('click')
+    };
+
     render() {
         return (
             <div>
-                <Button className={BaseStyle.nomargin}
+                <Button onClick={this.doneButtonClick} className={BaseStyle.nomargin}
                         animated
                         color='green'
                         size='massive'>
@@ -20,4 +38,4 @@ class DoneButton extends Component {
     }
 }
 
-export default DoneButton;
+export default connect(mapStateToProps, mapDispatchToProps)(DoneButton);

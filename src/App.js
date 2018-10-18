@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+// import { bindActionCreators } from 'redux';
+// import { connect } from "react-redux";
+
+// import * as actionCreators from './actions/actionCreators';
+
 import style from  './App.css';
 
-// My Components
 import CardWrapper from './components/basic/CardWrapper';
+
+// const mapStateToProps = state => {
+//   return { articles: state.articles };
+// };
+//
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators(actionCreators, dispatch);
+// }
 
 class App extends Component {
   render() {
@@ -14,4 +26,5 @@ class App extends Component {
   }
 }
 
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
