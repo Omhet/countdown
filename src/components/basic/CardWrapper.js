@@ -39,7 +39,7 @@ class CardWrapper extends Component {
 
         return (
             <div className={style.cardwrapper}>
-                <div className={style.upper}>
+                <div>
                     <Rate/>
                     <CardHeader/>
                     <Timer/>
@@ -47,7 +47,7 @@ class CardWrapper extends Component {
 
                 {currentCard}
 
-                <div className={style.bottom}>
+                <div>
                     <CancelButton/>
                     <DoneButton/>
                 </div>
