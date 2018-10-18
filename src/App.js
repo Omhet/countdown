@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
-// import { connect } from "react-redux";
-
-// import * as actionCreators from './actions/actionCreators';
-
+import { Switch, Route } from 'react-router-dom'
 import style from  './App.css';
 
-import CardWrapper from './components/basic/CardWrapper';
+import Game from './components/basic/Game';
+import Menu from './components/basic/Menu';
 
-// const mapStateToProps = state => {
-//   return { articles: state.articles };
-// };
-//
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(actionCreators, dispatch);
-// }
 
 class App extends Component {
   render() {
     return (
       <div className={style.App}>
-          <CardWrapper />
+          <Switch>
+              <Route exact path='/' component={Menu} />
+              <Route exact path='/game' component={Game} />
+          </Switch>
       </div>
     );
   }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
