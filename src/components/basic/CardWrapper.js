@@ -48,6 +48,7 @@ class CardWrapper extends Component {
                     <Timer />
                 </div>
 
+
                 { currentCard }
 
                 <div>
