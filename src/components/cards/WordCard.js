@@ -4,24 +4,27 @@ import * as style from './Card.css';
 import CellGroup from '../basic/CellGroup'
 
 import * as letters from '../../constants/letters'
-import { startLevel } from "../../actions";
+import { setCardValue, startLevel } from "../../actions";
 import { connect } from "react-redux";
+import CardInput from "./card-elements/CardInput";
 
 const MAX_LETTERS_LENGTH = 9;
 
 const mapStateToProps = state => {
-  return { level: state.level };
+    return { level: state.level, currentCard: state.currentCard };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    startLevel: () => dispatch(startLevel())
-  };
+    return {
+        startLevel: () => dispatch(startLevel()),
+        setCardValue: value => dispatch(setCardValue(value))
+    };
 };
 
 class WordCard extends Component {
     state = {
-        letters: []
+        letters: [],
+        currentValue: ''
     };
 
     setLetterToState = letters => {
@@ -51,7 +54,12 @@ class WordCard extends Component {
     };
 
     cellClick = value => {
-        console.log(value);
+        if (this.props.level.started) {
+            this.setState({
+                currentValue: this.state.currentValue.concat(value)
+            });
+            this.props.setCardValue(this.state.currentValue);
+        }
     };
 
     render() {
@@ -60,7 +68,11 @@ class WordCard extends Component {
                 <CellGroup
                     values={this.state.letters}
                     maxLength={MAX_LETTERS_LENGTH}
-                    cellClick={this.cellClick}/>
+                    cellClick={this.cellClick}
+                />
+
+                <CardInput value={this.props.currentCard.value}/>
+
                 <Button.Group>
                     <Button onClick={this.getVowel}>Гласная</Button>
                     <Button onClick={this.getConsonant}>Согласная</Button>

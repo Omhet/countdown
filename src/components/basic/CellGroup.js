@@ -25,13 +25,13 @@ class CellGroup extends Component {
     render() {
         const updatedValues = this.props.values.concat(this.state.emptyValues.slice(this.props.values.length));
 
-        const cells = updatedValues.slice(0, this.props.maxLength).map((v, i) => {
+        const cells = updatedValues.slice(0, this.props.maxLength).map((value, i) => {
             return <Cell
                 index={i}
                 key={i}
                 hidden={!this.props.level.started}
-                state={getCellState(v)}
-                value={v}
+                state={getCellState(value)}
+                value={value}
                 cellClick={index => this.props.cellClick(updatedValues[index])}/>;
         });
         
