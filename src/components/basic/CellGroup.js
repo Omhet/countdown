@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 import Cell from './Cell';
 import * as style from './Base.css';
 import { getCellState } from "../../helpers/helpers";
+import { connect } from "react-redux";
+
+
+const mapStateToProps = state => {
+    return { level: state.level };
+};
 
 
 class CellGroup extends Component {
@@ -23,6 +29,7 @@ class CellGroup extends Component {
             return <Cell
                 index={i}
                 key={i}
+                hidden={!this.props.level.started}
                 state={getCellState(v)}
                 value={v}
                 cellClick={index => this.props.cellClick(updatedValues[index])}/>;
@@ -36,4 +43,4 @@ class CellGroup extends Component {
     }
 }
 
-export default CellGroup;
+export default connect(mapStateToProps)(CellGroup);

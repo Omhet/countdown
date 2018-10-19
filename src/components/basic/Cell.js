@@ -11,6 +11,10 @@ const getColor = state => {
     }
 };
 
+const getOpacity = hidden => {
+  return (hidden) ? '1' : '0.5';
+};
+
 class Cell extends Component {
     handleClick = () => {
         this.props.cellClick(this.props.index);
@@ -18,11 +22,12 @@ class Cell extends Component {
 
     render() {
         const color = getColor(this.props.state);
+        const opacity = getOpacity(this.props.hidden);
 
         return (
             <div className={style.cell} onClick={this.handleClick}>
                 {this.props.value}
-                <div className={style.cellCover} style={{ backgroundColor: color}}></div>
+                <div className={style.cellCover} style={{ backgroundColor: color, opacity}}></div>
             </div>
         );
     }
