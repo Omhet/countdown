@@ -42,7 +42,7 @@ class CardInput extends Component {
     }
 
     handleChange = (e) => {
-        const regExp = getValidationRegExp(this.props.validValues);
+        // const regExp = getValidationRegExp(this.props.validValues);
         const trimmedValue = e.target.value.replace(/\s/g, '').slice(0, this.props.maxLength);
 
         if (!this.isValidValue(trimmedValue)) return false;

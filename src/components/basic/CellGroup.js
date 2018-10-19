@@ -2,23 +2,30 @@ import React, { Component } from 'react';
 
 import Cell from './Cell';
 import * as style from './Base.css';
+import { getCellState } from "../../helpers/helpers";
 
 
 class CellGroup extends Component {
     constructor(props) {
         super(props);
 
-        const values = Array(props.maxLength).fill('*');
+        const emptyValues = Array(props.maxLength).fill('*');
 
         this.state = {
-            values
+            emptyValues,
         }
     }
 
     render() {
-        const updatedValues = this.props.values.concat(this.state.values.slice(this.props.values.length));
+        const updatedValues = this.props.values.concat(this.state.emptyValues.slice(this.props.values.length));
+
         const cells = updatedValues.slice(0, this.props.maxLength).map((v, i) => {
-            return <Cell key={i} value={v}/>;
+            return <Cell
+                index={i}
+                key={i}
+                state={getCellState(v)}
+                value={v}
+                cellClick={index => this.props.cellClick(updatedValues[index])}/>;
         });
         
         return (
