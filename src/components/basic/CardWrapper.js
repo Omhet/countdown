@@ -1,55 +1,58 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+
 import style from './CardWrapper.css';
+import baseStyle from './Base.css';
+
 import Rate from './Rate';
 import CardHeader from './CardHeader';
 import Timer from './Timer';
 import CancelButton from './CancelButton';
 import DoneButton from './DoneButton';
-import { connect } from "react-redux";
-import WordCard from "../cards/WordCard";
-import NumberCard from "../cards/NumberCard";
-import { setCardName } from "../../actions/actionCreators";
-import { NUMBER_CARD, WORD_CARD } from "../../constants/cardNames";
+import WordCard from '../cards/WordCard';
+import NumberCard from '../cards/NumberCard';
+import * as cardNames from '../../constants/cardNames';
+
+import * as actionCreators from '../../actions/index';
 
 const mapStateToProps = state => {
-    return { level: state.level };
+  return { level: state.level };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        setCardName: name => dispatch(setCardName(name))
+        setCardName: name => dispatch(actionCreators.setCardName(name))
     }
 };
 
-const cardNameToComponentsMap = {
+const mapCardNamesToComponents = {
     WordCard: <WordCard/>,
-    NumberCard: <NumberCard/>
+    NumberCard: <NumberCard/>,
 };
 
 class CardWrapper extends Component {
     resolveCard = () => {
-        const currentCardName = (this.props.level % 2 === 0) ? WORD_CARD : NUMBER_CARD;
-        this.props.setCardName(currentCardName);
-        return cardNameToComponentsMap[currentCardName];
-    };
-
+        const cardName = (this.props.level % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
+        this.props.setCardName(cardName);
+        return mapCardNamesToComponents[cardName];
+    }
 
     render() {
         const currentCard = this.resolveCard();
 
         return (
             <div className={style.cardwrapper}>
-                <div>
-                    <Rate/>
-                    <CardHeader/>
-                    <Timer/>
+                <div className={baseStyle.borderBottom}>
+                    <Rate />
+                    <CardHeader />
+                    <Timer />
                 </div>
 
-                {currentCard}
+                { currentCard }
 
                 <div>
-                    <CancelButton/>
-                    <DoneButton/>
+                    <CancelButton />
+                    <DoneButton />
                 </div>
             </div>
         );

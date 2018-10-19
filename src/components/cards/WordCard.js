@@ -1,22 +1,43 @@
 import React, { Component } from 'react';
-import CardInput from "../basic/CardInput";
 import { Button } from "semantic-ui-react";
-import style from './Card.css';
+import * as style from './Card.css';
+import CardInput from '../basic/CardInput'
+import CellGroup from '../basic/CellGroup'
 
-const vowels = ['у', 'е', 'ы', 'а', 'о', 'э', 'я', 'и', 'ю'];
+import * as letters from '../../constants/letters'
+
+const MAX_LETTERS_LENGTH = 9;
 
 class WordCard extends Component {
     state = {
         letters: []
     };
 
+    getVowel = () => {
+        const randInd = Math.floor(Math.random() * letters.vowels.length);
+        const vowel = letters.vowels[randInd];
+        this.setState({
+            letters: [...this.state.letters, vowel]
+        });
+        
+    }
+
+    getConsonant = () => {
+        const randInd = Math.floor(Math.random() * letters.consonants.length);
+        const consonant = letters.consonants[randInd];
+        this.setState({
+            letters: [...this.state.letters, consonant]
+        });
+    }
+
     render() {
         return (
             <div className={style.card}>
-                <CardInput/>
+                <CellGroup values={this.state.letters} maxLength={MAX_LETTERS_LENGTH}/>
+                <CardInput maxLength={MAX_LETTERS_LENGTH} validValues={this.state.letters}/>
                 <Button.Group>
-                    <Button>Гласная</Button>
-                    <Button>Согласная</Button>
+                    <Button onClick={this.getVowel}>Гласная</Button>
+                    <Button onClick={this.getConsonant}>Согласная</Button>
                 </Button.Group>
             </div>
         );

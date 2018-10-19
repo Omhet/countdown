@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import CardInput from "../basic/CardInput";
+import React, {Component} from 'react';
+import { Button } from "semantic-ui-react";
 
 class NumberCard extends Component {
     render() {
         return (
             <div>
-                NumberCard
-                <CardInput/>
+                <Button animated color='red'>Маленькое</Button>
             </div>
         );
     }

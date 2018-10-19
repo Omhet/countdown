@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {Button, Icon} from "semantic-ui-react";
 import BaseStyle from "./Base.css";
 
-import { levelUp } from '../../actions/actionCreators';
+import { levelUp } from '../../actions/index';
 
 const mapStateToProps = state => {
   return { currentCard: state.currentCard };
@@ -24,7 +24,7 @@ class DoneButton extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.props.levelUp} className={BaseStyle.nomargin}
+                <Button onClick={this.doneButtonClick} className={BaseStyle.nomargin}
                         animated
                         color='green'
                         size='massive'>

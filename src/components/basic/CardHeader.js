@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import {Header} from "semantic-ui-react";
-import { NUMBER_CARD, WORD_CARD } from "../../constants/cardNames";
 import { connect } from "react-redux";
 
+import {Header} from "semantic-ui-react";
+import * as cardNames from '../../constants/cardNames'
+
 const mapStateToProps = state => {
-  return { cardName: state.currentCard.name };
+  return { name: state.currentCard.name };
 };
 
 class CardHeader extends Component {
     getDescription = () => {
-        switch (this.props.cardName) {
-            case WORD_CARD:
-                return 'Найди слово';
-            case NUMBER_CARD:
-                return 'Найди число';
+        switch (this.props.name) {
+            case cardNames.WORD_CARD:
+                return 'Найди слово'
+            case cardNames.NUMBER_CARD:
+                return 'Найди число'
             default:
                 return '';
         }
-    };
-
+    }
     render() {
         const description = this.getDescription();
 
