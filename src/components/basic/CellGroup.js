@@ -19,20 +19,43 @@ class CellGroup extends Component {
 
         this.state = {
             emptyValues,
+            givenValues: []
         }
     }
 
-    render() {
-        const updatedValues = this.props.values.concat(this.state.emptyValues.slice(this.props.values.length));
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.values !== this.props.values) {
+            this.setState({
+                givenValues: nextProps.values
+            });
+        }
+    }
 
-        const cells = updatedValues.slice(0, this.props.maxLength).map((value, i) => {
+    cellClick = index => {
+        const newGivenValues = [...this.state.givenValues];
+        newGivenValues[index] = '*';
+        this.setState({
+            givenValues: newGivenValues
+        });
+    };
+
+    render() {
+        const { emptyValues, givenValues } = this.state;
+        const { values, maxLength } = this.props;
+
+        const sliceOfEmptyValues = emptyValues.slice(values.length);
+        const updatedValues = givenValues.concat(sliceOfEmptyValues);
+
+        const limitedUpdatedValues = updatedValues.slice(0, maxLength);
+
+        const cells = limitedUpdatedValues.map((value, i) => {
             return <Cell
                 index={i}
                 key={i}
                 hidden={!this.props.level.started}
                 state={getCellState(value)}
                 value={value}
-                cellClick={index => this.props.cellClick(updatedValues[index])}/>;
+                cellClick={this.cellClick}/>;
         });
         
         return (

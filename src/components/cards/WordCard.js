@@ -71,7 +71,7 @@ class WordCard extends Component {
                     cellClick={this.cellClick}
                 />
 
-                <CardInput value={this.props.currentCard.value}/>
+                <CardInput value={this.state.currentValue}/>
 
                 <Button.Group>
                     <Button onClick={this.getVowel}>Гласная</Button>
