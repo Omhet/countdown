@@ -15,7 +15,7 @@ class CellGroup extends Component {
     constructor(props) {
         super(props);
 
-        const emptyValues = Array(props.maxLength).fill('*');
+        const emptyValues = Array(props.maxLength).fill('');
 
         this.state = {
             emptyValues,
@@ -31,12 +31,17 @@ class CellGroup extends Component {
         }
     }
 
-    cellClick = index => {
-        const newGivenValues = [...this.state.givenValues];
-        newGivenValues[index] = '*';
-        this.setState({
-            givenValues: newGivenValues
-        });
+    cellClick = (index, value) => {
+        if (this.props.level.started) {
+            const newGivenValues = [...this.state.givenValues];
+            newGivenValues[index] = '';
+
+            this.setState({
+                givenValues: newGivenValues
+            });
+
+            this.props.cellClick(value);
+        }
     };
 
     render() {

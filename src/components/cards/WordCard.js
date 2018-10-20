@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Button } from "semantic-ui-react";
+import React, {Component} from 'react';
+import {Button} from "semantic-ui-react";
 import * as style from './Card.css';
 import CellGroup from '../basic/CellGroup'
 
 import * as letters from '../../constants/letters'
-import { setCardValue, startLevel } from "../../actions";
-import { connect } from "react-redux";
+import {setCardValue, startLevel} from "../../actions";
+import {connect} from "react-redux";
 import CardInput from "./card-elements/CardInput";
 
 const MAX_LETTERS_LENGTH = 9;
 
 const mapStateToProps = state => {
-    return { level: state.level, currentCard: state.currentCard };
+    return {level: state.level, currentCard: state.currentCard};
 };
 
 const mapDispatchToProps = dispatch => {
@@ -54,12 +54,10 @@ class WordCard extends Component {
     };
 
     cellClick = value => {
-        if (this.props.level.started) {
-            this.setState({
-                currentValue: this.state.currentValue.concat(value)
-            });
-            this.props.setCardValue(this.state.currentValue);
-        }
+        this.setState({
+            currentValue: this.state.currentValue.concat(value)
+        });
+        this.props.setCardValue(this.state.currentValue);
     };
 
     render() {
@@ -73,9 +71,11 @@ class WordCard extends Component {
 
                 <CardInput value={this.state.currentValue}/>
 
-                <Button.Group>
-                    <Button onClick={this.getVowel}>Гласная</Button>
-                    <Button onClick={this.getConsonant}>Согласная</Button>
+                <Button.Group >
+                    <Button disabled={this.props.level.started}
+                            onClick={this.getVowel}>Гласная</Button>
+                    <Button disabled={this.props.level.started}
+                            onClick={this.getConsonant}>Согласная</Button>
                 </Button.Group>
             </div>
         );

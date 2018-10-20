@@ -17,7 +17,7 @@ const getOpacity = hidden => {
 
 class Cell extends Component {
     handleClick = () => {
-        this.props.cellClick(this.props.index);
+        this.props.cellClick(this.props.index, this.props.value);
     };
 
     render() {
