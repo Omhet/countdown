@@ -20,7 +20,7 @@ export const stopLevel = () => ({ type: STOP_LEVEL });
 
 export const updateScore = score => ({ type: UPDATE_SCORE, score: score });
 
-export const setMaxTime = time => ({ type: SET_MAX_TIME, score: time });
+export const setMaxTime = time => ({ type: SET_MAX_TIME, time: time });
 
 
 
