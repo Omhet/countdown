@@ -32,6 +32,8 @@ export const calculateScore = async (cardName, value) => {
         case WORD_CARD:
             score = await calculateScoreForWord(value);
             break;
+        default:
+            score = 0;
     }
 
     return score;
