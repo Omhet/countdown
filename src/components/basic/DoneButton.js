@@ -6,7 +6,7 @@ import BaseStyle from "./Base.css";
 
 import {levelUp} from '../../actions/index';
 import {calculateScore} from "../../helpers/helpers";
-import {updateScore} from "../../actions";
+import {stopLevel, updateScore} from "../../actions";
 
 const mapStateToProps = state => {
     return {currentCard: state.currentCard, score: state.score};
@@ -15,6 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         levelUp: () => dispatch(levelUp()),
+        stopLevel: () => dispatch(stopLevel()),
         updateScore: score => dispatch(updateScore(score))
     };
 };
@@ -26,7 +27,8 @@ class DoneButton extends Component {
         const score = await calculateScore(name, value);
 
         this.props.updateScore(score);
-
+        this.props.stopLevel();
+        this.props.levelUp();
     };
 
     render() {
