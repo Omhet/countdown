@@ -57,8 +57,8 @@ class WordCard extends Component {
     cellClick = value => {
         this.setState({
             currentValue: this.state.currentValue.concat(value)
-        });
-        this.props.setCardValue(this.state.currentValue);
+        }, () => this.props.setCardValue(this.state.currentValue));
+
     };
 
     popInputValue = () => {
@@ -70,7 +70,7 @@ class WordCard extends Component {
         this.setState({
             returnedValue: lastValue,
             currentValue: currentValue.join('')
-        })
+        }, () => this.props.setCardValue(this.state.currentValue))
     };
 
     render() {

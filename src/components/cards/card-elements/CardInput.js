@@ -4,9 +4,7 @@ import {Icon} from "semantic-ui-react";
 
 
 class CardInput extends Component {
-    // state = {
-    //     currentValue: ''
-    // };
+
 
     render() {
         const trimmedValue = this.props.value.replace(/\s/g, '');
