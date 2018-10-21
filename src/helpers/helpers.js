@@ -33,7 +33,7 @@ export const calculateScore = async (cardName, value) => {
             score = await calculateScoreForWord(value);
             break;
         default:
-            score = 0;
+            score = 0
     }
 
     return score;
