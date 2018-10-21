@@ -5,6 +5,8 @@ import * as style from './Base.css';
 import { getCellState } from "../../helpers/helpers";
 import { connect } from "react-redux";
 
+const EMPTY_FILL = ' ';
+
 
 const mapStateToProps = state => {
     return { level: state.level };
@@ -15,7 +17,7 @@ class CellGroup extends Component {
     constructor(props) {
         super(props);
 
-        const emptyValues = Array(props.maxLength).fill('');
+        const emptyValues = Array(props.maxLength).fill(EMPTY_FILL);
 
         this.state = {
             emptyValues,
@@ -24,6 +26,17 @@ class CellGroup extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if (nextProps.returnedValue !== this.props.returnedValue) {
+            const returnedValue = nextProps.returnedValue;
+            if (returnedValue) {
+                let givenValues = [...this.state.givenValues];
+                givenValues = givenValues.join('').replace(EMPTY_FILL, returnedValue).split('');
+
+                this.setState({
+                    givenValues
+                });
+            }
+        }
         if(nextProps.values !== this.props.values) {
             this.setState({
                 givenValues: nextProps.values
@@ -34,7 +47,7 @@ class CellGroup extends Component {
     cellClick = (index, value) => {
         if (this.props.level.started) {
             const newGivenValues = [...this.state.givenValues];
-            newGivenValues[index] = '';
+            newGivenValues[index] = EMPTY_FILL;
 
             this.setState({
                 givenValues: newGivenValues

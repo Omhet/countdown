@@ -24,7 +24,8 @@ const mapDispatchToProps = dispatch => {
 class WordCard extends Component {
     state = {
         letters: [],
-        currentValue: ''
+        currentValue: '',
+        returnedValue: ''
     };
 
     setLetterToState = letters => {
@@ -60,6 +61,18 @@ class WordCard extends Component {
         this.props.setCardValue(this.state.currentValue);
     };
 
+    popInputValue = () => {
+        const lastValue = this.state.currentValue[this.state.currentValue.length - 1];
+        const currentValue = [...this.state.currentValue];
+
+        currentValue.pop();
+
+        this.setState({
+            returnedValue: lastValue,
+            currentValue: currentValue.join('')
+        })
+    };
+
     render() {
         return (
             <div className={style.card}>
@@ -67,9 +80,10 @@ class WordCard extends Component {
                     values={this.state.letters}
                     maxLength={MAX_LETTERS_LENGTH}
                     cellClick={this.cellClick}
+                    returnedValue={this.state.returnedValue}
                 />
 
-                <CardInput value={this.state.currentValue}/>
+                <CardInput backspaceClick={this.popInputValue} value={this.state.currentValue}/>
 
                 <Button.Group >
                     <Button disabled={this.props.level.started}
