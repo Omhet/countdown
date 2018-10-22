@@ -32,7 +32,7 @@ const mapCardNamesToComponents = {
 
 class CardWrapper extends Component {
     resolveCard = () => {
-        const cardName = (this.props.level % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
+        const cardName = (this.props.level.number % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
         this.props.setCardName(cardName);
         return mapCardNamesToComponents[cardName];
     }
@@ -47,7 +47,6 @@ class CardWrapper extends Component {
                     <CardHeader />
                     <Timer />
                 </div>
-
 
                 { currentCard }
 

@@ -1,10 +1,15 @@
-import { LEVEL_UP } from "../constants/actionTypes";
+import {LEVEL_UP, START_LEVEL, STOP_LEVEL} from "../constants/actionTypes";
 
-export default function level(state = 0, action) {
-  switch (action.type) {
-    case LEVEL_UP:
-      return state + 1
-    default:
-      return state
-  }
+export default function level(state = { number: 0, started: false }, action) {
+    // console.log(state);
+    switch (action.type) {
+        case LEVEL_UP:
+            return {...state, number: state.number + 1 };
+        case START_LEVEL:
+            return {...state, started: true };
+        case STOP_LEVEL:
+            return {...state, started: false };
+        default:
+            return state
+    }
 }
