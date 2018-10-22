@@ -49,7 +49,9 @@ class Timer extends Component {
     };
 
     tick = () => {
-        if (this.state.currentTime <= 0) {
+        if (this.props.maxTime < 0) return false;
+
+        if (this.state.currentTime === 0) {
             this.setState({
                 currentTime: this.props.maxTime
             }, () => this.nextLevel());
@@ -67,10 +69,12 @@ class Timer extends Component {
     }
 
     render() {
+        const time = (this.props.maxTime < 0) ? '∞' : this.state.currentTime;
+
         return (
             <div className={BaseStyle.flex}>
                 <Icon name='time'/>
-                <Header className={BaseStyle.nomargin} size='medium'>{this.state.currentTime}</Header>
+                <Header className={BaseStyle.nomargin} size='medium'>{time}</Header>
             </div>
         );
     }
