@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import style from './Menu.css';
 import {setMaxTime} from "../../actions";
 import {connect} from "react-redux";
-import {NORMAL_TIME} from "../../constants/maxTimes";
+import { EASY_TIME, HARD_TIME, NORMAL_TIME } from "../../constants/maxTimes";
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => {
 
 class Menu extends Component {
     easyClick = () => {
-
+        this.props.setMaxTime(EASY_TIME);
     };
 
     normalClick = () => {
@@ -23,7 +23,7 @@ class Menu extends Component {
     };
 
     hardClick = () => {
-
+        this.props.setMaxTime(HARD_TIME);
     };
 
     render() {
@@ -31,9 +31,9 @@ class Menu extends Component {
             <div className={style.menu}>
                 <Link to='/game'><Icon name='play circle' size='massive'/></Link>
                 <Button.Group>
-                    <Button onClick={this.easyClick}>Легко</Button>
-                    <Button onClick={this.normalClick}>Нормально</Button>
-                    <Button onClick={this.hardClick}>Сложно</Button>
+                    <Button className={[style.buttonEasy, style.button]} onClick={this.easyClick}>Легко</Button>
+                    <Button className={[style.buttonNormal, style.button]} onClick={this.normalClick}>Нормально</Button>
+                    <Button className={[style.buttonHard, style.button]} onClick={this.hardClick}>Сложно</Button>
                 </Button.Group>
             </div>
         );
