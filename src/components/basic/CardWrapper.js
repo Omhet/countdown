@@ -16,7 +16,6 @@ import * as cardNames from '../../constants/cardNames';
 import * as actionCreators from '../../actions/index';
 import {FINAL_LEVEL} from "../../constants/common";
 import GameOverCard from "../cards/GameOverCard";
-import Level from "./Level";
 
 const mapStateToProps = state => {
   return { level: state.level };
