@@ -2,20 +2,22 @@ import React, {Component} from 'react';
 import {Button, Icon} from "semantic-ui-react";
 import BaseStyle from "./Base.css";
 import { Link } from "react-router-dom";
-import { restartGame, stopLevel } from "../../actions";
+import { dropLevel, dropScore, stopLevel } from "../../actions";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = dispatch => {
   return {
-      restartGame: () => dispatch(restartGame()),
-      stopLevel: () => dispatch(stopLevel())
+      dropLevel: () => dispatch(dropLevel()),
+      stopLevel: () => dispatch(stopLevel()),
+      dropScore: () => dispatch(dropScore())
   }
 };
 
 class CancelButton extends Component {
     cancelClick = () => {
         this.props.stopLevel();
-        this.props.restartGame();
+        this.props.dropLevel();
+        this.props.dropScore();
     };
 
     render() {

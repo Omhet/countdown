@@ -1,4 +1,4 @@
-import { LEVEL_UP, RESTART_GAME, START_LEVEL, STOP_LEVEL } from "../constants/actionTypes";
+import { LEVEL_UP, DROP_LEVEL, START_LEVEL, STOP_LEVEL } from "../constants/actionTypes";
 
 export default function level(state = { number: 0, started: false }, action) {
     // console.log(state);
@@ -9,7 +9,7 @@ export default function level(state = { number: 0, started: false }, action) {
             return {...state, started: true };
         case STOP_LEVEL:
             return {...state, started: false };
-        case RESTART_GAME:
+        case DROP_LEVEL:
             return {...state, number: 0 };
         default:
             return state

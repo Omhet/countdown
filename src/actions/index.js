@@ -5,7 +5,7 @@ import {
     START_LEVEL,
     UPDATE_SCORE,
     STOP_LEVEL,
-    SET_MAX_TIME, RESTART_GAME
+    SET_MAX_TIME, DROP_LEVEL, DROP_SCORE
 } from "../constants/actionTypes";
 
 export const levelUp = () => ({ type: LEVEL_UP });
@@ -22,7 +22,9 @@ export const updateScore = score => ({ type: UPDATE_SCORE, score: score });
 
 export const setMaxTime = time => ({ type: SET_MAX_TIME, time: time });
 
-export const restartGame = () => ({ type: RESTART_GAME });
+export const dropLevel = () => ({ type: DROP_LEVEL });
+
+export const dropScore = () => ({ type: DROP_SCORE });
 
 
 
