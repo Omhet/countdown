@@ -29,6 +29,7 @@ class Menu extends Component {
     render() {
         return (
             <div className={style.menu}>
+                <h1>Обратный Отсчет</h1>
                 <Link to='/game'><Icon name='play circle' size='massive'/></Link>
                 <Button.Group>
                     <Button className={[style.buttonEasy, style.button]} onClick={this.easyClick}>Легко</Button>
