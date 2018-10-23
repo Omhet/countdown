@@ -16,6 +16,7 @@ import * as cardNames from '../../constants/cardNames';
 import * as actionCreators from '../../actions/index';
 import {FINAL_LEVEL} from "../../constants/common";
 import GameOverCard from "../cards/GameOverCard";
+import Level from "./Level";
 
 const mapStateToProps = state => {
   return { level: state.level };
@@ -40,7 +41,8 @@ class CardWrapper extends Component {
             return <GameOverCard/>
         }
 
-        const cardName = (this.props.level.number % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
+        // const cardName = (this.props.level.number % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
+        const cardName = cardNames.WORD_CARD;
         this.props.setCardName(cardName);
         return mapCardNamesToComponents[cardName];
     }
@@ -53,7 +55,10 @@ class CardWrapper extends Component {
                 <div className={baseStyle.borderBottom}>
                     <Rate />
                     <CardHeader />
-                    <Timer />
+                    <div>
+                        <Level />
+                        <Timer />
+                    </div>
                 </div>
 
                 { currentCard }
