@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import * as style from './Cell.css';
 
+import BaseStyle from "../basic/Base.css";
+
+
 const getColor = state => {
     if (state === 'positive') {
         return 'palegreen';
@@ -25,7 +28,7 @@ class Cell extends Component {
         const opacity = getOpacity(this.props.hidden);
 
         return (
-            <div className={style.cell} onClick={this.handleClick}>
+            <div className={[style.cell]} onClick={this.handleClick}>
                 {this.props.value}
                 <div className={style.cellCover} style={{ backgroundColor: color, opacity}}></div>
             </div>

@@ -1,6 +1,6 @@
 .cardwrapper {
-    width: 70%;
-    height: 65%;
+    width: 100%;
+    height: 100%;
     border: 1px solid lightslategrey;
     background-color: #ececec;
     border-radius: 5px;
@@ -10,7 +10,6 @@
 }
 
 .cardwrapper > * {
-    /*border: 1px solid red;*/
     display: flex;
     justify-content: space-between;
 }

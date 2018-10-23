@@ -7,6 +7,8 @@ import * as letters from '../../constants/letters'
 import {setCardValue, startLevel} from "../../actions";
 import {connect} from "react-redux";
 import CardInput from "./card-elements/CardInput";
+import BaseStyle from "../../components/basic/Base.css";
+
 
 const MAX_LETTERS_LENGTH = 9;
 
@@ -86,9 +88,9 @@ class WordCard extends Component {
                 <CardInput backspaceClick={this.popInputValue} value={this.state.currentValue}/>
 
                 <Button.Group >
-                    <Button disabled={this.props.level.started}
+                    <Button className={BaseStyle.responsiveFont}  disabled={this.props.level.started}
                             onClick={this.getVowel}>Гласная</Button>
-                    <Button disabled={this.props.level.started}
+                    <Button className={BaseStyle.responsiveFont} disabled={this.props.level.started}
                             onClick={this.getConsonant}>Согласная</Button>
                 </Button.Group>
             </div>
