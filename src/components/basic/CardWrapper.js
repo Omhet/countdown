@@ -56,7 +56,6 @@ class CardWrapper extends Component {
                     <Rate />
                     <CardHeader />
                     <div>
-                        <Level />
                         <Timer />
                     </div>
                 </div>
