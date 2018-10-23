@@ -1,4 +1,5 @@
 export const LEVEL_UP = "LEVEL_UP";
+export const RESTART_GAME = "RESTART_GAME";
 export const SET_CARD_VALUE = "SET_CARD_VALUE";
 export const SET_CARD_NAME = "SET_CARD_NAME";
 export const START_LEVEL = "START_LEVEL";
