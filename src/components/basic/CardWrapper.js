@@ -36,7 +36,7 @@ class CardWrapper extends Component {
     resolveCard = () => {
         const level = this.props.level.number;
 
-        if (level === FINAL_LEVEL) {
+        if (level >= FINAL_LEVEL) {
             return <GameOverCard/>
         }
 

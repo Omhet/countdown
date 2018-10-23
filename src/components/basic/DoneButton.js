@@ -7,9 +7,14 @@ import BaseStyle from "./Base.css";
 import {levelUp} from '../../actions/index';
 import {calculateScore} from "../../helpers/helpers";
 import {stopLevel, updateScore} from "../../actions";
+import { FINAL_LEVEL } from "../../constants/common";
 
 const mapStateToProps = state => {
-    return {currentCard: state.currentCard, score: state.score};
+    return {
+        currentCard: state.currentCard,
+        score: state.score,
+        level: state.level
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -31,11 +36,16 @@ class DoneButton extends Component {
         this.props.levelUp();
     };
 
+    isGameOver = () => {
+        return this.props.level.number >= FINAL_LEVEL;
+    };
+
     render() {
         return (
             <div>
                 <Button onClick={this.doneButtonClick} className={ [BaseStyle.responsiveFont, BaseStyle.nomargin] }
                         animated
+                        disabled={this.isGameOver()}
                         color='green'
                         size='massive'>
                     <Button.Content visible>Готово</Button.Content>
