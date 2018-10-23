@@ -34,7 +34,7 @@ class DoneButton extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.doneButtonClick} className={BaseStyle.nomargin}
+                <Button onClick={this.doneButtonClick} className={ [BaseStyle.responsiveFont, BaseStyle.nomargin] }
                         animated
                         color='green'
                         size='massive'>
