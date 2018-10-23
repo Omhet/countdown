@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import * as style from './Cell.css';
 
-import BaseStyle from "../basic/Base.css";
-
-
 const getColor = state => {
     if (state === 'positive') {
         return 'palegreen';

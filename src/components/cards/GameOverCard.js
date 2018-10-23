@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import {Header} from "semantic-ui-react";
-import Rate from "../basic/Rate";
+
+import style from './Card.css';
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+    return { score: state.score };
+};
 
 class GameOverCard extends Component {
     render() {
         return (
-            <div>
-                <Header>Game Over</Header>
-                Your score is
-                <Rate />
+            <div className={style.gameOverCard}>
+                <span>Вы набрали:</span>
+                <span>{this.props.score}</span>
             </div>
         );
     }
 }
 
-export default GameOverCard;
+export default connect(mapStateToProps)(GameOverCard);

@@ -1,6 +1,6 @@
 .cardwrapper {
     width: 100%;
-    height: 100%;
+    height: 70%;
     border: 1px solid lightslategrey;
     background-color: #ececec;
     border-radius: 5px;
@@ -12,4 +12,10 @@
 .cardwrapper > * {
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+    .cardwrapper {
+        height: 100%;
+    }
 }
