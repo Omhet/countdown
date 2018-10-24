@@ -30,6 +30,16 @@ class WordCard extends Component {
         returnedValue: ''
     };
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.level.number !== this.props.level.number) {
+            this.setState({
+                letters: [],
+                currentValue: '',
+                returnedValue: ''
+            })
+        }
+    }
+
     setLetterToState = letters => {
         const randInd = Math.floor(Math.random() * letters.length);
         const letter = letters[randInd];
