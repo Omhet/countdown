@@ -3,6 +3,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
 import style from './Menu.css';
+import TotalScore from './TotalScore';
 import {setMaxTime} from "../../actions";
 import {connect} from "react-redux";
 import { EASY_TIME, HARD_TIME, NORMAL_TIME } from "../../constants/maxTimes";
@@ -36,6 +37,9 @@ class Menu extends Component {
                     <Button className={[style.buttonNormal, style.button]} onClick={this.normalClick}>Нормально</Button>
                     <Button className={[style.buttonHard, style.button]} onClick={this.hardClick}>Сложно</Button>
                 </Button.Group>
+                <div>
+                    <TotalScore />
+                </div>
             </div>
         );
     }
