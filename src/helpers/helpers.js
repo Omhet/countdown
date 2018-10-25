@@ -28,7 +28,7 @@ export const getCellState = value => {
 };
 
 export const calculateScore = async (cardName, value) => {
-    let score = 0;
+    let score = { warning: '', value: 0 };
 
     if (!value) return score;
 
@@ -36,8 +36,8 @@ export const calculateScore = async (cardName, value) => {
         case WORD_CARD:
             score = await calculateScoreForWord(value);
             break;
-        default:
-            score = 0
+        // default:
+        //     score = 0
     }
 
     return score;
@@ -49,10 +49,10 @@ export const calculateScoreForWord = async word => {
 
     if (res && res.def && res.def.length > 0) {
         // dispatch(isWord(true));
-        return word.length;
+        return { warning: '', value: word.length };
     }
 
     // dispatch(isWord(false));
 
-    return 0;
+    return { warning: 'В нашем словаре нет такого слова :(', value: word.length };
 };

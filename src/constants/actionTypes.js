@@ -8,5 +8,9 @@ export const STOP_LEVEL = "STOP_LEVEL";
 export const UPDATE_SCORE = "UPDATE_SCORE";
 export const DROP_SCORE = "DROP_SCORE";
 export const SET_MAX_TIME = "SET_MAX_TIME";
+// export const IS_WORD = "IS_WORD";
+export const SET_WARNING = "SET_WARNING";
+
+
 
 

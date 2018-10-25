@@ -10,6 +10,7 @@ import Timer from './Timer';
 import CancelButton from './CancelButton';
 import DoneButton from './DoneButton';
 import WordCard from '../cards/WordCard';
+import Warning from './Warning';
 import NumberCard from '../cards/NumberCard';
 import * as cardNames from '../../constants/cardNames';
 
@@ -18,7 +19,7 @@ import {FINAL_LEVEL} from "../../constants/common";
 import GameOverCard from "../cards/GameOverCard";
 
 const mapStateToProps = state => {
-  return { level: state.level };
+  return { level: state.level, warning: state.warning };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -58,9 +59,8 @@ class CardWrapper extends Component {
                         <Timer />
                     </div>
                 </div>
-
+                <Warning message={this.props.warning} />
                 { currentCard }
-
                 <div>
                     <CancelButton />
                     <DoneButton />
