@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
-// const mapStateToProps = state => {
-//     return { totalScore: state.score.total };
-// }
+const mapStateToProps = state => {
+    return { score: state.score };
+}
 
 class TotalScore extends Component {
     state = {
-        totalScore: 0
+        currentScore: 0
     }
 
     componentDidMount() {
         const cashedTotalScore = JSON.parse(localStorage.getItem('totalScore'));
-        if (cashedTotalScore) {
-            if (this.state.totalScore > cashedTotalScore) {
-                localStorage.setItem('totalScore', this.state.totalScore.toString())            
+
+        if (cashedTotalScore !== undefined) {
+            if (this.props.score > cashedTotalScore) {
+                localStorage.setItem('totalScore', this.props.score.toString());
+                this.setState({
+                    currentScore: this.props.score
+                });
             } else {
                 this.setState({
-                    totalScore: cashedTotalScore
+                    currentScore: cashedTotalScore
                 });
             }
         } else {
@@ -26,9 +31,9 @@ class TotalScore extends Component {
 
     render() {
         return (
-            <span>{this.state.totalScore}</span>
+            <span>{this.state.currentScore}</span>
         );
     }
 }
 
-export default TotalScore;
+export default connect(mapStateToProps)(TotalScore);
