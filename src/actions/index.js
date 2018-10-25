@@ -5,12 +5,14 @@ import {
     START_LEVEL,
     UPDATE_SCORE,
     STOP_LEVEL,
-    SET_MAX_TIME, DROP_LEVEL, DROP_SCORE
+    SET_MAX_TIME, DROP_LEVEL, DROP_SCORE, CLEAR_CARD_VALUE
 } from "../constants/actionTypes";
 
 export const levelUp = () => ({ type: LEVEL_UP });
 
 export const setCardValue = value => ({ type: SET_CARD_VALUE, value: value });
+
+export const clearCardValue = () => ({ type: CLEAR_CARD_VALUE });
 
 export const setCardName = name => ({ type: SET_CARD_NAME, name: name });
 

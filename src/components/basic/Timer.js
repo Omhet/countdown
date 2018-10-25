@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {Header, Icon} from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Header, Icon } from "semantic-ui-react";
 
 import BaseStyle from './Base.css';
-import {connect} from "react-redux";
-import {calculateScore} from "../../helpers/helpers";
-import {levelUp, stopLevel, updateScore} from "../../actions";
+import { connect } from "react-redux";
+import { calculateScore } from "../../helpers/helpers";
+import { levelUp, stopLevel, updateScore } from "../../actions";
 
 const mapStateToProps = state => {
     return {
@@ -31,7 +31,7 @@ class Timer extends Component {
 
     componentDidMount() {
         let timer = setInterval(this.tick, 1000);
-        this.setState({timer});
+        this.setState({ timer });
     }
 
     componentWillUnmount() {
@@ -39,7 +39,7 @@ class Timer extends Component {
     }
 
     nextLevel = async () => {
-        const {value, name} = this.props.currentCard;
+        const { value, name } = this.props.currentCard;
 
         const score = await calculateScore(name, value);
 
@@ -70,11 +70,14 @@ class Timer extends Component {
 
     render() {
         const time = (this.props.maxTime < 0) ? '∞' : this.state.currentTime;
+        const color = (this.state.currentTime <= 5) ? 'red' : '';
 
         return (
             <div className={BaseStyle.flex}>
                 <Icon name='time'/>
-                <Header className={BaseStyle.nomargin} size='medium'>{time}</Header>
+                <Header className={BaseStyle.nomargin} size='medium'>
+                    <span style={{color}}>{time}</span>
+                </Header>
             </div>
         );
     }
