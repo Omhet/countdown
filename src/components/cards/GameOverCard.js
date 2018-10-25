@@ -10,13 +10,18 @@ const mapStateToProps = state => {
 
 class GameOverCard extends Component {
     render() {
+        const currentScore = this.props.score;
+        // const record = (currentScore > localStorage.getItem('totalScore'))
+        //                 ? <span className={style.smallheader}>Поздравляем!<br/><br/>Это ваш рекорд</span>
+        //                 : '';
+
         return (
             <div className={style.gameOverCard}>
-                <span>Вы набрали:</span>
-                <span>{this.props.score}</span>
                 <div>
-                    <span>Ваш рекорд:</span>
-                    <TotalScore/>
+                    <span className={style.bigheader}>Вы набрали: {currentScore}</span>
+                </div>
+                <div>
+                    <span className={style.smallheader}>Ваш рекорд: <TotalScore/></span>
                 </div>
             </div>
         );

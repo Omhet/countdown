@@ -38,6 +38,7 @@ class Menu extends Component {
                     <Button className={[style.buttonHard, style.button]} onClick={this.hardClick}>Сложно</Button>
                 </Button.Group>
                 <div>
+                    <span>Ваш рекорд:</span>
                     <TotalScore />
                 </div>
             </div>

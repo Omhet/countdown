@@ -20,6 +20,11 @@
     margin: 2em;
 }
 
+.menu span {
+    margin-right: 0.3em;
+    font-size: 2em;
+}
+
 .button:hover, .button:focus {
     color: whitesmoke !important;
 }
