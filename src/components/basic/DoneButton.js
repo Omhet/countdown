@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from "react-redux";
+import React, { Component } from 'react';
+import { connect } from "react-redux";
 
-import {Button, Icon} from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import BaseStyle from "./Base.css";
 
-import {levelUp} from '../../actions/index';
-import {calculateScore} from "../../helpers/helpers";
+import { levelUp } from '../../actions/index';
+import { calculateScore } from "../../helpers/helpers";
 import { clearCardValue, stopLevel, updateScore } from "../../actions";
 import { FINAL_LEVEL } from "../../constants/common";
 
@@ -27,15 +27,29 @@ const mapDispatchToProps = dispatch => {
 };
 
 class DoneButton extends Component {
+    state = {
+        loading: false
+    }
+
     doneButtonClick = async () => {
-        const {value, name} = this.props.currentCard;
+        const { value, name } = this.props.currentCard;
 
-        const score = await calculateScore(name, value);
+        try {
+            await this.setState({ loading: true });
 
-        this.props.updateScore(score);
-        this.props.clearCardValue();
-        this.props.stopLevel();
-        this.props.levelUp();
+            const score = await calculateScore(name, value);
+            console.log(score)
+
+            await this.setState({ loading: false });
+
+            this.props.updateScore(score);
+            this.props.clearCardValue();
+            this.props.stopLevel();
+            this.props.levelUp();
+        } catch(e) {
+            alert('Check you internet connection');
+            await this.setState({ loading: false });
+        }
     };
 
     isGameOver = () => {
@@ -45,14 +59,14 @@ class DoneButton extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.doneButtonClick} className={ [BaseStyle.responsiveFont, BaseStyle.nomargin] }
-                        animated
-                        disabled={this.isGameOver()}
-                        color='green'
-                        size='massive'>
+                <Button onClick={this.doneButtonClick} className={[BaseStyle.responsiveFont, BaseStyle.nomargin]}
+                    animated
+                    disabled={this.isGameOver() || this.state.loading}
+                    color='green'
+                    size='massive'>
                     <Button.Content visible>Готово</Button.Content>
                     <Button.Content hidden>
-                        <Icon name='arrow right'/>
+                        <Icon name='arrow right' />
                     </Button.Content>
                 </Button>
             </div>

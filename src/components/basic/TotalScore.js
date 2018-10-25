@@ -12,8 +12,8 @@ class TotalScore extends Component {
 
     componentDidMount() {
         const cashedTotalScore = JSON.parse(localStorage.getItem('totalScore'));
-
-        if (cashedTotalScore !== undefined) {
+        
+        if (cashedTotalScore !== null) {
             if (this.props.score > cashedTotalScore) {
                 localStorage.setItem('totalScore', this.props.score.toString());
                 this.setState({
@@ -25,7 +25,7 @@ class TotalScore extends Component {
                 });
             }
         } else {
-            localStorage.setItem('totalScore', '0')            
+            localStorage.setItem('totalScore', '0')
         }
     }
 
