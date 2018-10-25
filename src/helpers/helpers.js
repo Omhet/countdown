@@ -1,6 +1,10 @@
 import * as letters from '../constants/letters';
 import {WORD_CARD} from "../constants/cardNames";
 import {getYandexDicUrl} from "./apiUrls";
+import { dispatch } from "react-redux";
+
+import { isWord } from '../actions/index';
+
 const POSITIVE = 'positive';
 const NEGATIVE = 'negative';
 
@@ -44,8 +48,11 @@ export const calculateScoreForWord = async word => {
     const res = await request(dicUrl);
 
     if (res && res.def && res.def.length > 0) {
+        // dispatch(isWord(true));
         return word.length;
     }
+
+    // dispatch(isWord(false));
 
     return 0;
 };

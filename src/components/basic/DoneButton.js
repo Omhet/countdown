@@ -38,7 +38,6 @@ class DoneButton extends Component {
             await this.setState({ loading: true });
 
             const score = await calculateScore(name, value);
-            console.log(score)
 
             await this.setState({ loading: false });
 
@@ -62,6 +61,7 @@ class DoneButton extends Component {
                 <Button onClick={this.doneButtonClick} className={[BaseStyle.responsiveFont, BaseStyle.nomargin]}
                     animated
                     disabled={this.isGameOver() || this.state.loading}
+                    loading={this.state.loading}
                     color='green'
                     size='massive'>
                     <Button.Content visible>Готово</Button.Content>
