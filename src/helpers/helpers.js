@@ -1,4 +1,5 @@
 import * as letters from '../constants/letters';
+import * as numbers from '../constants/numbers';
 import {WORD_CARD} from "../constants/cardNames";
 import {getYandexDicUrl} from "./apiUrls";
 
@@ -21,6 +22,10 @@ export const getCellState = value => {
         return POSITIVE;
     } else if (contains(letters.consonants, value)) {
         return NEGATIVE;
+    } else if (contains(numbers.small, value)) {
+        return NEGATIVE;
+    } else if (contains(numbers.big, value)) {
+        return POSITIVE;
     }
 };
 
