@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import style from './Menu.css';
 import TotalScore from './TotalScore';
-import {setMaxTime} from "../../actions";
-import {connect} from "react-redux";
+import { setMaxTime } from "../../actions";
+import { connect } from "react-redux";
 import { EASY_TIME, HARD_TIME, NORMAL_TIME } from "../../constants/maxTimes";
 
 const mapDispatchToProps = dispatch => {
@@ -31,15 +31,18 @@ class Menu extends Component {
         return (
             <div className={style.menu}>
                 <h1>Обратный Отсчет</h1>
-                <Link to='/game'><Icon name='play circle' size='massive'/></Link>
-                <Button.Group>
-                    <Button className={[style.buttonEasy, style.button]} onClick={this.easyClick}>Легко</Button>
-                    <Button className={[style.buttonNormal, style.button]} onClick={this.normalClick}>Нормально</Button>
-                    <Button className={[style.buttonHard, style.button]} onClick={this.hardClick}>Сложно</Button>
-                </Button.Group>
+                <div className={style.controls}>
+                    <Link to='/game'><Icon name='play circle' size='massive'/></Link>
+                    <Button.Group>
+                        <Button className={[style.buttonEasy, style.button]} onClick={this.easyClick}>Легко</Button>
+                        <Button className={[style.buttonNormal, style.button]}
+                                onClick={this.normalClick}>Нормально</Button>
+                        <Button className={[style.buttonHard, style.button]} onClick={this.hardClick}>Сложно</Button>
+                    </Button.Group>
+                </div>
                 <div>
                     <span>Ваш рекорд:</span>
-                    <TotalScore />
+                    <TotalScore/>
                 </div>
             </div>
         );
