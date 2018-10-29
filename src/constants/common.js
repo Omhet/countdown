@@ -1,1 +1,1 @@
-export const FINAL_LEVEL = 10;
+export const FINAL_LEVEL = 3;
