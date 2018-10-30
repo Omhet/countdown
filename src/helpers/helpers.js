@@ -13,7 +13,7 @@ const request = async url => {
   return json;
 };
 
-const contains = (arr, val) => {
+export const contains = (arr, val) => {
     return (arr.indexOf(val) > -1);
 };
 

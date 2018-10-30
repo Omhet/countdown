@@ -7,6 +7,9 @@ import BaseStyle from "../basic/Base.css";
 import * as numbers from "../../constants/numbers";
 import { setCardValue, startLevel } from "../../actions";
 import { connect } from "react-redux";
+import ButtonGroup from "./card-elements/ButtonGroup";
+import { signs } from "../../constants/signs";
+import { contains } from "../../helpers/helpers";
 
 const MAX_NUMBERS_LENGTH = 9;
 
@@ -24,7 +27,7 @@ const mapDispatchToProps = dispatch => {
 class NumberCard extends Component {
     state = {
         numbers: [],
-        currentValue: '',
+        currentValue: [],
         returnedValue: ''
     };
 
@@ -32,7 +35,7 @@ class NumberCard extends Component {
         if (nextProps.level.number !== this.props.level.number) {
             this.setState({
                 numbers: [],
-                currentValue: '',
+                currentValue: [],
                 returnedValue: ''
             })
         }
@@ -66,24 +69,34 @@ class NumberCard extends Component {
 
     cellClick = value => {
         this.setState({
-            currentValue: this.state.currentValue.concat(value)
-        }, () => this.props.setCardValue(this.state.currentValue));
+            currentValue: [...this.state.currentValue, value]
+        }, () => this.props.setCardValue(this.state.currentValue.join('')));
 
     };
 
+    // buttonClick = value => {
+    //     this.setState({
+    //         currentValue: this.state.currentValue.concat(value)
+    //     }, () => this.props.setCardValue(this.state.currentValue));
+    //
+    // };
+
     popInputValue = () => {
-        const lastValue = this.state.currentValue[this.state.currentValue.length - 1];
         const currentValue = [...this.state.currentValue];
+        const lastValue = this.state.currentValue[this.state.currentValue.length - 1];
+
+        if (!lastValue) return false;
 
         currentValue.pop();
 
         this.setState({
-            returnedValue: lastValue,
+            returnedValue: contains(signs, lastValue) ? '' : lastValue,
             currentValue: currentValue.join('')
-        }, () => this.props.setCardValue(this.state.currentValue))
+        }, () => this.props.setCardValue(this.state.currentValue.join('')))
     };
 
     render() {
+        console.log(this.state.currentValue)
         return (
             <div className={style.card}>
                 <CellGroup
@@ -93,7 +106,9 @@ class NumberCard extends Component {
                     returnedValue={this.state.returnedValue}
                 />
 
-                <CardInput backspaceClick={this.popInputValue} value={this.state.currentValue}/>
+                <ButtonGroup buttons={signs} buttonClick={this.cellClick} />
+
+                <CardInput backspaceClick={this.popInputValue} value={this.state.currentValue.join('')}/>
 
                 <Button.Group >
                     <Button className={BaseStyle.responsiveFont}  disabled={this.props.level.started}
