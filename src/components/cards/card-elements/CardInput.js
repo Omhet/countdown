@@ -7,12 +7,12 @@ class CardInput extends Component {
 
 
     render() {
-        const trimmedValue = this.props.value.replace(/\s/g, '');
+        // const trimmedValue = .replace(/\s/g, '');
 
         return (
             <div className={style.cardInput}>
                 <span className={style.value}>
-                    {trimmedValue}
+                    {this.props.value}
                 </span>
                 <Icon
                     onClick={this.props.backspaceClick}

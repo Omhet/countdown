@@ -74,12 +74,6 @@ class NumberCard extends Component {
 
     };
 
-    // buttonClick = value => {
-    //     this.setState({
-    //         currentValue: this.state.currentValue.concat(value)
-    //     }, () => this.props.setCardValue(this.state.currentValue));
-    //
-    // };
 
     popInputValue = () => {
         const currentValue = [...this.state.currentValue];
@@ -91,12 +85,12 @@ class NumberCard extends Component {
 
         this.setState({
             returnedValue: contains(signs, lastValue) ? '' : lastValue,
-            currentValue: currentValue.join('')
+            currentValue: currentValue
         }, () => this.props.setCardValue(this.state.currentValue.join('')))
     };
 
     render() {
-        console.log(this.state.currentValue)
+        console.log(this.state.currentValue.join(' '))
         return (
             <div className={style.card}>
                 <CellGroup
@@ -108,7 +102,7 @@ class NumberCard extends Component {
 
                 <ButtonGroup buttons={signs} buttonClick={this.cellClick} />
 
-                <CardInput backspaceClick={this.popInputValue} value={this.state.currentValue.join('')}/>
+                <CardInput backspaceClick={this.popInputValue} value={this.state.currentValue.join(' ')}/>
 
                 <Button.Group >
                     <Button className={BaseStyle.responsiveFont}  disabled={this.props.level.started}
