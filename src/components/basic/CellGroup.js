@@ -32,7 +32,7 @@ class CellGroup extends Component {
                 let givenValues = [...this.state.givenValues];
                 console.log(givenValues)
                 
-                givenValues = givenValues.join(' ').replace(EMPTY_FILL, returnedValue).split(' ');
+                givenValues = givenValues.join('').replace(EMPTY_FILL, returnedValue).split('');
                 console.log(givenValues)
                 
                 this.setState({

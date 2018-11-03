@@ -11,8 +11,8 @@ const ButtonWithValue = ({ value, buttonClick }) => {
 class ButtonGroup extends Component {
 
     render() {
-        const buttons = this.props.buttons.map(b => {
-            return  <ButtonWithValue value={b} buttonClick={this.props.buttonClick} />
+        const buttons = this.props.buttons.map((b, i) => {
+            return  <ButtonWithValue key={i} value={b} buttonClick={this.props.buttonClick} />
         });
 
         return (
