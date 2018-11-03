@@ -42,8 +42,8 @@ class CardWrapper extends Component {
         }
 
         //const cardName = (this.props.level.number % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
-        const cardName = cardNames.WORD_CARD;
-        // const cardName = cardNames.NUMBER_CARD;
+        // const cardName = cardNames.WORD_CARD;
+        const cardName = cardNames.NUMBER_CARD;
         this.props.setCardName(cardName);
         return mapCardNamesToComponents[cardName];
     }
