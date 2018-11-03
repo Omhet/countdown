@@ -30,10 +30,7 @@ class CellGroup extends Component {
             const returnedValue = nextProps.returnedValue;
             if (returnedValue) {
                 let givenValues = [...this.state.givenValues];
-                console.log(givenValues)
-                
-                givenValues = givenValues.join(' ').replace(EMPTY_FILL, returnedValue).split(' ');
-                console.log(givenValues)
+                givenValues = givenValues.join(',').replace(EMPTY_FILL, returnedValue).split(',');
                 
                 this.setState({
                     givenValues
