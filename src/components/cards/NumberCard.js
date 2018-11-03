@@ -85,12 +85,11 @@ class NumberCard extends Component {
 
         this.setState({
             returnedValue: contains(signs, lastValue) ? '' : lastValue,
-            currentValue: currentValue
+            currentValue
         }, () => this.props.setCardValue(this.state.currentValue.join('')))
     };
 
     render() {
-        console.log(this.state.currentValue.join(' '))
         return (
             <div className={style.card}>
                 <CellGroup
