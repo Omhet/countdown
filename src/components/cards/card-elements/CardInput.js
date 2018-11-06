@@ -7,8 +7,6 @@ class CardInput extends Component {
 
 
     render() {
-        // const trimmedValue = .replace(/\s/g, '');
-
         return (
             <div className={style.cardInput}>
                 <span className={style.value}>

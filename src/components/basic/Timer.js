@@ -4,7 +4,7 @@ import { Header, Icon } from "semantic-ui-react";
 import BaseStyle from './Base.css';
 import { connect } from "react-redux";
 import { calculateScore } from "../../helpers/helpers";
-import { levelUp, stopLevel, updateScore } from "../../actions";
+import { levelUp, stopLevel, updateScore, clearCardValue, setWarning } from "../../actions";
 
 const mapStateToProps = state => {
     return {
@@ -18,7 +18,9 @@ const mapDispatchToProps = dispatch => {
     return {
         levelUp: () => dispatch(levelUp()),
         stopLevel: () => dispatch(stopLevel()),
-        updateScore: score => dispatch(updateScore(score))
+        updateScore: score => dispatch(updateScore(score)),
+        clearCardValue: () => dispatch(clearCardValue()),
+        setWarning: warning => dispatch(setWarning(warning))
     };
 };
 
@@ -41,11 +43,18 @@ class Timer extends Component {
     nextLevel = async () => {
         const { value, name } = this.props.currentCard;
 
-        const score = await calculateScore(name, value);
+        try {
+            const score = await calculateScore(name, value);
 
-        this.props.updateScore(score);
-        this.props.stopLevel();
-        this.props.levelUp();
+            this.props.setWarning(score.warning);
+            this.props.updateScore(score.value);
+            setTimeout(() => this.props.setWarning(''), 1000)
+            this.props.clearCardValue();
+            this.props.stopLevel();
+            this.props.levelUp();
+        } catch(e) {
+            alert('Check you internet connection');
+        }
     };
 
     tick = () => {

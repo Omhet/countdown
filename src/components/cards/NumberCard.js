@@ -68,6 +68,15 @@ class NumberCard extends Component {
     };
 
     cellClick = value => {
+        const lastValue = this.state.currentValue[this.state.currentValue.length - 1];
+
+        if (!lastValue && contains(signs, value)) return false;
+
+        if (lastValue && contains(signs, lastValue) && contains(signs, value)) return false;
+
+        if (lastValue && contains(numbers.all, lastValue) && contains(numbers.all, value)) return false;
+        
+
         this.setState({
             currentValue: [...this.state.currentValue, value]
         }, () => this.props.setCardValue(this.state.currentValue.join('')));
