@@ -33,12 +33,12 @@ class DoneButton extends Component {
     }
 
     doneButtonClick = async () => {
-        const { value, name } = this.props.currentCard;
+        const card = this.props.currentCard;
 
         try {
             await this.setState({ loading: true });
 
-            const score = await calculateScore(name, value);
+            const score = await calculateScore(card);
 
             await this.setState({ loading: false });
 
@@ -49,6 +49,7 @@ class DoneButton extends Component {
             this.props.stopLevel();
             this.props.levelUp();
         } catch(e) {
+            console.log(e)
             alert('Check you internet connection');
             await this.setState({ loading: false });
         }

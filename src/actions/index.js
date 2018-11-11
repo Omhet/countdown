@@ -6,7 +6,7 @@ import {
     UPDATE_SCORE,
     STOP_LEVEL,
     SET_MAX_TIME, DROP_LEVEL, DROP_SCORE, CLEAR_CARD_VALUE,
-    // IS_WORD,
+    SET_TARGET,
     SET_WARNING
 } from "../constants/actionTypes";
 
@@ -30,7 +30,7 @@ export const dropLevel = () => ({ type: DROP_LEVEL });
 
 export const dropScore = () => ({ type: DROP_SCORE });
 
-// export const isWord = bool => ({ type: IS_WORD, bool: bool });
+export const setCardTarget = target => ({ type: SET_TARGET, target: target });
 
 export const setWarning = warning => ({ type: SET_WARNING, warning: warning });
 
