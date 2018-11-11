@@ -41,6 +41,7 @@ export const calculateScore = async ({ name, value, target }) => {
             break;
         case NUMBER_CARD:
             score = calculateScoreForNumber(value, target);
+            break;
         default:
             break;
     }
@@ -52,16 +53,18 @@ export const calculateScoreForNumber = (expr, target) => {
     const userValue = eval(expr);
     const diff = Math.abs(target - userValue);
 
-    console.log(diff);
-
     let value = 0;
+    let warning = '';
 
     if (diff === 0) value = 10;
     else if (diff > 0 && diff < 10) value = 5;
     else if (diff > 10 && diff < 20) value = 2;
-    else value = 0;
+    else {
+        value = 0;
+        warning = `Ваш результат ${userValue} слишком далек от цели ${target}`;
+    }
     
-    return { value, warning: '' };
+    return { value, warning };
 }
 
 export const calculateScoreForWord = async word => {
@@ -85,7 +88,6 @@ const isValidTargetNumber = target => {
 }
 
 export const calculateTargetNumberValue = numbers => {
-    let cnt = 0;
     while (true) {
         const expr = numbers.map((n, i) => {
             const sign = getRandomElementFromArray(signs);

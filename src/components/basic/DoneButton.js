@@ -44,7 +44,7 @@ class DoneButton extends Component {
 
             this.props.setWarning(score.warning);
             this.props.updateScore(score.value);
-            setTimeout(() => this.props.setWarning(''), 1000)
+            setTimeout(() => this.props.setWarning(''), 2000)
             this.props.clearCardValue();
             this.props.stopLevel();
             this.props.levelUp();
