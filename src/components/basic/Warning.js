@@ -6,7 +6,6 @@ const style = {
         color: '#9F6000',
         padding: '0',
         backgroundColor: '#FEEFB3'
-
     }
 }
 
