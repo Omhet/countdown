@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 import Cell from './Cell';
 import * as style from './Base.css';
-import { getCellState } from "../../helpers/helpers";
+import { getCellState, contains } from "../../helpers/helpers";
 import { connect } from "react-redux";
+import * as numbers from "../../constants/numbers";
 
 const EMPTY_FILL = ' ';
 
@@ -32,13 +33,13 @@ class CellGroup extends Component {
                 let givenValues = [...this.state.givenValues];
 
                 givenValues = givenValues.join(',').replace(EMPTY_FILL, returnedValue).split(',');
-                
+
                 this.setState({
                     givenValues
                 });
             }
         }
-        if(nextProps.values !== this.props.values) {
+        if (nextProps.values !== this.props.values) {
             this.setState({
                 givenValues: nextProps.values
             });
@@ -47,9 +48,11 @@ class CellGroup extends Component {
 
     cellClick = (index, value) => {
         if (this.props.level.started) {
+            const lastValue = this.props.inputLastValue;
+            if (lastValue && contains(numbers.all, lastValue) && contains(numbers.all, value)) return false;
+
             const newGivenValues = [...this.state.givenValues];
             newGivenValues[index] = EMPTY_FILL;
-
             this.setState({
                 givenValues: newGivenValues
             });
@@ -74,9 +77,9 @@ class CellGroup extends Component {
                 hidden={!this.props.level.started}
                 state={getCellState(value)}
                 value={value}
-                cellClick={this.cellClick}/>;
+                cellClick={this.cellClick} />;
         });
-        
+
         return (
             <div className={style.flex}>
                 {cells}
