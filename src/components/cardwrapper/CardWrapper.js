@@ -17,39 +17,40 @@ import * as cardNames from '../../constants/cardNames';
 import * as actionCreators from '../../actions/index';
 import {FINAL_LEVEL} from "../../constants/common";
 import GameOverCard from "../cards/GameOverCard";
+import CardResolver from "./CardResolver";
 
 const mapStateToProps = state => {
-  return { level: state.level, warning: state.warning };
+  return { warning: state.warning };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        setCardName: name => dispatch(actionCreators.setCardName(name))
-    }
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         setCardName: name => dispatch(actionCreators.setCardName(name))
+//     }
+// };
 
-const mapCardNamesToComponents = {
-    WordCard: <WordCard/>,
-    NumberCard: <NumberCard/>,
-};
+// const mapCardNamesToComponents = {
+//     WordCard: <WordCard/>,
+//     NumberCard: <NumberCard/>,
+// };
 
 class CardWrapper extends Component {
-    resolveCard = () => {
-        const level = this.props.level.number;
-
-        if (level >= FINAL_LEVEL) {
-            return <GameOverCard/>
-        }
-
-        //const cardName = (this.props.level.number % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
-        // const cardName = cardNames.WORD_CARD;
-        const cardName = cardNames.NUMBER_CARD;
-        this.props.setCardName(cardName);
-        return mapCardNamesToComponents[cardName];
-    }
+    // resolveCard = () => {
+    //     const level = this.props.level.number;
+    //
+    //     if (level >= FINAL_LEVEL) {
+    //         return <GameOverCard/>
+    //     }
+    //
+    //     //const cardName = (this.props.level.number % 2 === 0) ? cardNames.WORD_CARD : cardNames.NUMBER_CARD;
+    //     // const cardName = cardNames.WORD_CARD;
+    //     const cardName = cardNames.NUMBER_CARD;
+    //     this.props.setCardName(cardName);
+    //     return mapCardNamesToComponents[cardName];
+    // }
 
     render() {
-        const currentCard = this.resolveCard();
+        // const currentCard = this.resolveCard();
 
         return (
             <div className={style.cardwrapper}>
@@ -61,7 +62,7 @@ class CardWrapper extends Component {
                     </div>
                 </div>
                 <Warning message={this.props.warning} />
-                { currentCard }
+                <CardResolver/>
                 <div>
                     <CancelButton />
                     <DoneButton />
@@ -71,4 +72,4 @@ class CardWrapper extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardWrapper);
+export default connect(mapStateToProps)(CardWrapper);

@@ -100,3 +100,6 @@ export const calculateTargetNumberValue = numbers => {
     }
 }
 
+export const getElementFromCycledArray = (arr, index) => {
+    return arr[index % arr.length];
+}
