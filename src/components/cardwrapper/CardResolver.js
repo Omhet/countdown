@@ -7,6 +7,8 @@ import GameOverCard from "../cards/GameOverCard";
 import {CARD_NAMES} from "../../constants/cardNames";
 import {setCardName} from "../../actions";
 import {getElementFromCycledArray} from "../../helpers/helpers";
+import ConundrumCard from "../cards/ConundrumCard";
+import * as cardNames from "../../constants/cardNames";
 
 const mapStateToProps = state => {
     return { level: state.level };
@@ -21,6 +23,7 @@ const mapDispatchToProps = dispatch => {
 const cards = {
     WordCard: <WordCard/>,
     NumberCard: <NumberCard/>,
+    ConundrumCard: <ConundrumCard/>
 };
 
 class CardResolver extends Component {
@@ -31,9 +34,10 @@ class CardResolver extends Component {
             return <GameOverCard/>
         }
 
-        const cardName = getElementFromCycledArray(CARD_NAMES, level);
+        // const cardName = getElementFromCycledArray(CARD_NAMES, level);
         // const cardName = cardNames.WORD_CARD;
         // const cardName = cardNames.NUMBER_CARD;
+        const cardName = cardNames.CONUNDRUM_CARD;
         this.props.setCardName(cardName);
         return cards[cardName];
     }
