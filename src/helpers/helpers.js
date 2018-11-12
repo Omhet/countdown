@@ -103,3 +103,7 @@ export const calculateTargetNumberValue = numbers => {
 export const getElementFromCycledArray = (arr, index) => {
     return arr[index % arr.length];
 }
+
+export const getShuffledString = str => {
+    return str.split('').sort().join('');
+}

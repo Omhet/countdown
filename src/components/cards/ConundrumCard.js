@@ -8,6 +8,7 @@ import {setCardValue, startLevel} from "../../actions";
 import {connect} from "react-redux";
 import CardInput from "./card-elements/CardInput";
 import BaseStyle from "../../components/basic/Base.css";
+import {getShuffledString} from "../../helpers/helpers";
 
 
 const MAX_LETTERS_LENGTH = 9;
@@ -31,9 +32,10 @@ class ConundrumCard extends Component {
     };
 
     componentDidMount() {
-        const word = 'авторитет';
+        const word = 'авторадио';
+        const shuffled = getShuffledString(word);
         this.setState(
-            { letters: word.split('') },
+            { letters: shuffled.split('') },
             () => this.props.startLevel()
         );
     }
@@ -47,12 +49,6 @@ class ConundrumCard extends Component {
             })
         }
     }
-
-    // startLevelIfHaveAllLetters = () => {
-    //     if (this.state.letters.length + 1 >= MAX_LETTERS_LENGTH) {
-    //         this.props.startLevel();
-    //     }
-    // };
 
     cellClick = value => {
         this.setState({
