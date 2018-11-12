@@ -18,6 +18,8 @@ class CardHeader extends Component {
                 return 'Найди слово';
             case cardNames.NUMBER_CARD:
                 return 'Найди число';
+            case cardNames.CONUNDRUM_CARD:
+                return 'Найди перевернутое слово';
             default:
                 return '';
         }

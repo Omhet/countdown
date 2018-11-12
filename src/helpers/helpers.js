@@ -1,7 +1,7 @@
 import * as letters from '../constants/letters';
 import * as numbers from '../constants/numbers';
 import { signs } from '../constants/signs';
-import { WORD_CARD, NUMBER_CARD } from "../constants/cardNames";
+import {WORD_CARD, NUMBER_CARD, CONUNDRUM_CARD} from "../constants/cardNames";
 import { getYandexDicUrl } from "./apiUrls";
 
 const POSITIVE = 'positive';
@@ -42,6 +42,9 @@ export const calculateScore = async ({ name, value, target }) => {
         case NUMBER_CARD:
             score = calculateScoreForNumber(value, target);
             break;
+        case CONUNDRUM_CARD:
+            score = calculateScoreForConundrum(value, target);
+            break;
         default:
             break;
     }
@@ -76,6 +79,12 @@ export const calculateScoreForWord = async word => {
     }
 
     return { warning: 'В нашем словаре нет такого слова :(', value: 0 };
+};
+
+export const calculateScoreForConundrum = (word, target) => {
+    console.log(word, target)
+    if (word === target) return { value: 10, warning: ''}
+    else return { value: 0, warning: 'Неправильное слово'}
 };
 
 export const getRandomElementFromArray = arr => {

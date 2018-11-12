@@ -4,12 +4,11 @@ import * as style from './Card.css';
 import CellGroup from './card-elements/CellGroup'
 
 import * as letters from '../../constants/letters'
-import {setCardValue, startLevel} from "../../actions";
+import {setCardTarget, setCardValue, startLevel} from "../../actions";
 import {connect} from "react-redux";
 import CardInput from "./card-elements/CardInput";
 import BaseStyle from "../../components/basic/Base.css";
 import {getShuffledString} from "../../helpers/helpers";
-
 
 const MAX_LETTERS_LENGTH = 9;
 
@@ -20,7 +19,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         startLevel: () => dispatch(startLevel()),
-        setCardValue: value => dispatch(setCardValue(value))
+        setCardValue: value => dispatch(setCardValue(value)),
+        setCardTarget: target => dispatch(setCardTarget(target))
     };
 };
 
@@ -36,7 +36,10 @@ class ConundrumCard extends Component {
         const shuffled = getShuffledString(word);
         this.setState(
             { letters: shuffled.split('') },
-            () => this.props.startLevel()
+            () => {
+                this.props.startLevel();
+                this.props.setCardTarget(word);
+            }
         );
     }
 
