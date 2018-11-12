@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Header, Icon } from "semantic-ui-react";
 
-import BaseStyle from './Base.css';
+import BaseStyle from '../basic/Base.css';
 import { connect } from "react-redux";
 import { calculateScore } from "../../helpers/helpers";
-import { levelUp, stopLevel, updateScore, clearCardValue, setWarning } from "../../actions";
+import { levelUp, stopLevel, updateScore, clearCardValue, setWarning } from "../../actions/index";
 
 const mapStateToProps = state => {
     return {

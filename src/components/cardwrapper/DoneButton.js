@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import { Button, Icon } from "semantic-ui-react";
-import BaseStyle from "./Base.css";
+import BaseStyle from "../basic/Base.css";
 
 import { levelUp } from '../../actions/index';
 import { calculateScore } from "../../helpers/helpers";
-import { clearCardValue, stopLevel, updateScore, setWarning } from "../../actions";
+import { clearCardValue, stopLevel, updateScore, setWarning } from "../../actions/index";
 import { FINAL_LEVEL } from "../../constants/common";
 
 const mapStateToProps = state => {

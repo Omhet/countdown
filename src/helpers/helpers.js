@@ -99,3 +99,4 @@ export const calculateTargetNumberValue = numbers => {
         if (isValidTargetNumber(target)) return target;
     }
 }
+

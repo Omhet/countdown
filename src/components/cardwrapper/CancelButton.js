@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Icon} from "semantic-ui-react";
-import BaseStyle from "./Base.css";
+import BaseStyle from "../basic/Base.css";
 import { Link } from "react-router-dom";
-import { dropLevel, dropScore, stopLevel } from "../../actions";
+import { dropLevel, dropScore, stopLevel } from "../../actions/index";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = dispatch => {

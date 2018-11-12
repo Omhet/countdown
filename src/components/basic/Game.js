@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import CardWrapper from './CardWrapper';
+import CardWrapper from '../cardwrapper/CardWrapper';
 
 
 class Game extends Component {

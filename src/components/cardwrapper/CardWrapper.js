@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import style from './CardWrapper.css';
-import baseStyle from './Base.css';
+import baseStyle from '../basic/Base.css';
 
 import Rate from './Rate';
 import CardHeader from './CardHeader';
