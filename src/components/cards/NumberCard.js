@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from "semantic-ui-react";
 import * as style from "./Card.css";
-import CellGroup from "../basic/CellGroup";
+import CellGroup from "./card-elements/CellGroup";
 import CardInput from "./card-elements/CardInput";
 import BaseStyle from "../basic/Base.css";
 import { setCardValue, startLevel, setCardTarget } from "../../actions";

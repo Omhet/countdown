@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import Cell from './Cell';
-import * as style from './Base.css';
-import { getCellState, contains } from "../../helpers/helpers";
+import * as style from '../../basic/Base.css';
+import { getCellState, contains } from "../../../helpers/helpers";
 import { connect } from "react-redux";
-import * as numbers from "../../constants/numbers";
+import * as numbers from "../../../constants/numbers";
 
 const EMPTY_FILL = ' ';
 
